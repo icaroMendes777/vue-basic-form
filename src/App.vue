@@ -43,8 +43,6 @@
     </div> 
 </div>
    
-    <button v-on:click="test">test</button>
-    
   </div>
 </template>
 
@@ -86,12 +84,6 @@ export default {
   },
   methods: {
     
-    test: function()
-    {
-      alert(this.name)
-    },
-
-
     validateName: function(){
 
     this.nameErrorMessage = ""
