@@ -43,13 +43,14 @@
     </div> 
 </div>
    
-    
+    <button v-on:click="test">test</button>
     
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
 
@@ -59,14 +60,14 @@ export default {
   },
 
   updated(){
-    if(this.$data.name && this.$data.age && this.$data.framework){
+    if(this.name && this.age && this.framework){
      // console.log('ok')
-      if(this.$data.nameErrorMessage 
-            || this.$data.ageErrorMessage
-            || this.$data.frameworkErrorMessage){
-              this.$data.validForm =false
+      if(this.nameErrorMessage 
+            || this.ageErrorMessage
+            || this.frameworkErrorMessage){
+              this.validForm =false
             }else{
-              this.$data.validForm =true
+              this.validForm =true
             }
     }
   },
@@ -84,61 +85,67 @@ export default {
       }
   },
   methods: {
-   
+    
+    test: function()
+    {
+      alert(this.name)
+    },
+
+
     validateName: function(){
 
-    this.$data.nameErrorMessage = ""
+    this.nameErrorMessage = ""
     let error = false
-    if(this.$data.name.length < 2) {
-      this.$data.nameErrorMessage = "Nome muito curto, use pelo menos 2 caracteres. "
+    if(this.name.length < 2) {
+      this.nameErrorMessage = "Nome muito curto, use pelo menos 2 caracteres. "
       error = true
      }
      
-     if(this.$data.name.length > 12) {
-      this.$data.nameErrorMessage = "Nome muito longo, use no máximo 12 caracteres. "
+     if(this.name.length > 12) {
+      this.nameErrorMessage = "Nome muito longo, use no máximo 12 caracteres. "
       error = true
      }
 
       let pattern = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/
-      if (!pattern.test(this.$data.name)) {
+      if (!pattern.test(this.name)) {
      
-      this.$data.nameErrorMessage += "Utilize somente caracteres válidos, sem números e símbolos"
+      this.nameErrorMessage += "Utilize somente caracteres válidos, sem números e símbolos"
       error = true
     }
     
-    if(!error) this.$data.nameErrorMessage = ""
+    if(!error) this.nameErrorMessage = ""
 
     }, 
 
     validateAge: function(){
 
       let error = false;
-      this.$data.ageErrorMessage = ""
+      this.ageErrorMessage = ""
 
-      if(this.$data.age < 2) {
-      this.$data.ageErrorMessage = "Você é muito novo para estar aqui 🧐. "
+      if(this.age < 2) {
+      this.ageErrorMessage = "Você é muito novo para estar aqui 🧐. "
       error = true
      }
-     if(this.$data.age > 120) {
-      this.$data.ageErrorMessage = "Certeza que não tem algo errado com a sua idade?🧐. "
+     if(this.age > 120) {
+      this.ageErrorMessage = "Certeza que não tem algo errado com a sua idade?🧐. "
       error = true
      }
 
      let pattern = /^[0-9]+$/
-     if (!pattern.test(this.$data.age)) {
-      this.$data.ageErrorMessage += "Utilize somente números"
+     if (!pattern.test(this.age)) {
+      this.ageErrorMessage += "Utilize somente números"
       error = true
     }
     
-    if(!error) this.$data.ageErrorMessage = ""
+    if(!error) this.ageErrorMessage = ""
 
     },
     
     validateFramework()
     {
-      if(this.$data.framework != 'vue') 
-            this.$data.frameworkErrorMessage = "Sério???"
-      else this.$data.frameworkErrorMessage = ""
+      if(this.framework != 'vue') 
+            this.frameworkErrorMessage = "Sério???"
+      else this.frameworkErrorMessage = ""
     },
 
     submit()
